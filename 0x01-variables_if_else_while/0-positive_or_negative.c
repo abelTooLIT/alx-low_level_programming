@@ -2,8 +2,9 @@
 #include <time.h>
 #include <stdio.h>
 /**
- * main-This program will assign a random number to the variable
- * Return: 0 if exited properly, non-zero otherwise
+ * main - Entry point
+ *
+ * Return: Always 0 (Success)
  */
 int main(void)
 {
