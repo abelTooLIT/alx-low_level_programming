@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "holberton.h"
 /**
-  * main- protocol holberton school
+  * main- holberton school
   * Return: always zero
   */
 int main(void)
