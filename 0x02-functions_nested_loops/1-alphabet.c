@@ -1,6 +1,6 @@
 #include "holberton.h"
 /**
-  * print_alphabet - alphabet the code for Holberton School students.
+  * print_alphabet - alphabet the code for Alx School students.
   * @void: no content
   *
   */
