@@ -2,7 +2,7 @@
 
 /**
  * jack_bauer - Prints the minutes of a day
- *
+ * 24 the remake tho
  * Return: no return
  */
 void jack_bauer(void)
