@@ -1,25 +1,23 @@
 #include "holberton.h"
 /**
- * print_sign - print sign of number +, - or 0
- * @n: num
- * Return: always 0.
+ * print_last_digit - last digit
+ * @num: integer
+ * Return: always cero
  */
-int print_sign(int n)
+int print_last_digit(int num)
 {
-	if (n > 0)
-		{
-		_putchar('+');
-		return (1);
-		}
-	else if (n == 0)
-		{
-		_putchar('0');
-		return (0);
+	int digit;
+
+	digit = num % 10;
+
+	if (digit < 0)
+	{
+		_putchar(-digit + '0');
+		return (-digit);
 		}
 	else
 		{
-		_putchar('-');
-		return (-1);
+		_putchar(digit + '0');
+		return (digit);
 		}
-	return (0);
 }
