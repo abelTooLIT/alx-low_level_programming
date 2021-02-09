@@ -1,5 +1,4 @@
 #include "holberton.h"
-
 /**
  * main - check the code for Holberton School students.
  *
@@ -7,7 +6,7 @@
  */
  void jack_bauer(void)
 {
-int i;
+        int i;
 	int j;
 	char del = ':';
 
