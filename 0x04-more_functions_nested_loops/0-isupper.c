@@ -2,7 +2,7 @@
 /**
   * _isupper - uppercase of a letter
   * @c: variable of a letter
-  * Return: always 0.
+  * Return: 1 if upper always 0.
   */
 int _isupper(int c)
 {
