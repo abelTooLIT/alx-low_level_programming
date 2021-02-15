@@ -1,23 +1,57 @@
+#include <stdio.h>
 #include "holberton.h"
-/**
- * print_rev - writes the string in reverse
- * @s: string
- */
-void print_rev(char *s)
-{
-	int i = 0;
 
-	while (*s != '\0')
+/**
+* rev_string - Function
+* @s: parameter
+* Return: void
+*/
+
+void rev_string(char *s)
+{
+	int x = 0;
+	int y = 0;
+	char recibe;
+
+	if (s[0] == '\0')
 	{
-	i++;
-	s++;
+		s = "\0";
 	}
-	i = i - 1;
-	while (i >= 0)
+	else
 	{
-	i--;
-	s--;
-		_putchar(*s);
+		y = (_strlen(s) - 1);
+
+		while (x < y)
+		{
+			recibe = s[x];
+			s[x] = s[y];
+			s[y] = recibe;
+			x++;
+			y--;
+		}
 	}
-	_putchar('\n');
+}
+
+/**
+* _strlen - Function
+* @s: parameter
+* Return: i
+*/
+
+int _strlen(char *s)
+{
+	int i = 1;
+
+	if (s[0] == '\0')
+	{
+		i = 0;
+	}
+	else
+	{
+		while (s[i] != '\0')
+		{
+			i++;
+		}
+	}
+	return (i);
 }
