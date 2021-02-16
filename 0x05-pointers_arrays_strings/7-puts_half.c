@@ -1,4 +1,3 @@
-  
 #include "holberton.h"
 /**
  * puts_half - writes the second half of a string
