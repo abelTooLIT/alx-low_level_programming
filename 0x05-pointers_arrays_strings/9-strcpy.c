@@ -1,4 +1,3 @@
-  
 #include "holberton.h"
 /**
   * _strcpy - copies a string
@@ -16,3 +15,4 @@ char *_strcpy(char *dest, char *src)
 	for (i = 0; i < c; i++)
 		dest[i] = src[i];
 	return (dest);
+}
