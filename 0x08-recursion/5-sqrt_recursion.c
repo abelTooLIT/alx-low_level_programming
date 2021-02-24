@@ -1,31 +1,32 @@
 #include "holberton.h"
 /**
-  * _sqrt_recursion - returns the natural square root of a number
-  * @n: takes in an integer
-  * Return: a starting number and n to compare
-  */
+ *_sqrt_recursion -returns the value of x raised to the power of y.
+ *@n: integer
+ *@i: integer
+ *Return: integer
+ */
+int power(int n, int i);
 int _sqrt_recursion(int n)
 {
-	return (helper_julien(1, n));
+return (power(n, 1));
 }
+
+
 /**
-  * helper_julien - helps to find square root
-  * @x: takes in an integer
-  * @y: takes in an integer
-  * Return: return x compared to y
-  */
-int helper_julien(int x, int y)
+ *power - checks if an integer is the square root of a number
+ *@n : parameter designing an integer
+ *@i : integer
+ *
+ *Return: i
+ */
+int power(int n, int i)
 {
-	if (x * x == y)
-	{
-		return (x);
-	}
-	else if (x * x > y)
-	{
-		return (-1);
-	}
-	else
-	{
-	return (helper_julien(x += 1, y));
-	}
+if (n == i * i)
+{
+return (i);
+}
+else if (i * i > n)
+return (-1);
+else
+return (power(n, i + 1));
 }
