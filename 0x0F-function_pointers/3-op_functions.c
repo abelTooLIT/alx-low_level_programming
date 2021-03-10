@@ -1,27 +1,65 @@
 #include "3-calc.h"
-#include <stdio.h>
-/**
- * get_op_func - selects the correct function to perform the operation
- * @s:  is the operator passed as argument to the program
- * Return: no zero
- */
-int (*get_op_func(char *s))(int, int)
-{
-	op_t ops[] = {
-		{"+", op_add},
-		{"-", op_sub},
-		{"*", op_mul},
-		{"/", op_div},
-		{"%", op_mod},
-		{NULL, NULL}
-	};
-	int i = 0;
 
-	while (i < 5 && s[1] == '\0')
-	{
-		if (*s == *ops[i].op)
-			return (ops[i].f);
-	i++;
-	}
-	return (NULL);
+/**
+ * op_add - Operation of addition.
+ * @a: Operator 1
+ * @b: Operator 2
+ * Return: Addition of ops.
+ */
+
+int op_add(int a, int b)
+{
+return (a + b);
+}
+
+/**
+ * op_sub - Operation of substraction.
+ * @a: Operator 1
+ * @b: Operator 2
+ * Return: Substraction of ops.
+ */
+
+
+int op_sub(int a, int b)
+{
+return (a - b);
+}
+
+/**
+ * op_mul - Operation of multiplication.
+ * @a: Operator 1
+ * @b: Operator 2
+ * Return: Multiplication of ops.
+ */
+
+
+int op_mul(int a, int b)
+{
+return (a * b);
+}
+
+/**
+ * op_div - Operation of division.
+ * @a: Operator 1
+ * @b: Operator 2
+ * Return: Division of ops.
+ */
+
+
+int op_div(int a, int b)
+{
+return (a / b);
+}
+
+/**
+ * op_mod - Operation of module.
+ * @a: Operator 1
+ * @b: Operator 2
+ * Return: Module of ops.
+ */
+
+
+int op_mod(int a, int b)
+{
+return (a % b);
 }
