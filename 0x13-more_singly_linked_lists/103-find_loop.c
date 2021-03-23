@@ -1,33 +1,32 @@
 #include "lists.h"
-#include <stdlib.h>
+
 /**
- * find_listint_loop - Checks for infinite loops.
- * @head: Linked list.
- * Return: Address where infinite loop starts.
+ * find_listint_loop - finds the loop in a linked list.
+ * @head: pointer to the beginning of the list
+ *
+ * Return: address of the node where the loop starts or NULL if there's no loop
  */
 listint_t *find_listint_loop(listint_t *head)
 {
-	listint_t *slow_p, *fast_p;
+	listint_t *tortoise, *hare;
 
-	if (head == NULL || head->next == NULL)
-		return (NULL);
-	slow_p = head->next;
-	fast_p = (head->next)->next;
-	while (fast_p)
+	tortoise = hare = head;
+	while (tortoise && hare && hare->next)
 	{
-		if (slow_p == fast_p)
+		tortoise = tortoise->next;
+		hare = hare->next->next;
+		if (tortoise == hare)
 		{
-			slow_p = head;
-			while (slow_p != fast_p)
-			{
-				slow_p = slow_p->next;
-				fast_p = fast_p->next;
-			}
-			return (slow_p);
+			tortoise = head;
+			break;
 		}
-		slow_p = slow_p->next;
-		fast_p = (fast_p->next)->next;
 	}
-
-	return (NULL);
+	if (!tortoise || !hare || !hare->next)
+		return (NULL);
+	while (tortoise != hare)
+	{
+		tortoise = tortoise->next;
+		hare = hare->next;
+	}
+	return (hare);
 }
