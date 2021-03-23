@@ -1,69 +1,65 @@
 #include "lists.h"
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
+
 /**
- * floyds_cycle2 - checks for infinite loops.
- * @head: Linked list.
- * Return: Loop length.
+ * _ra - reallocates memory for an array of pointers
+ * to the nodes in a linked list
+ * @list: the old list to append
+ * @size: size of the new list (always one more than the old list)
+ * @new: new node to add to the list
+ *
+ * Return: pointer to the new list
  */
-int floyds_cycle2(const listint_t *head)
+listint_t **_ra(listint_t **list, size_t size, listint_t *new)
 {
-	const listint_t *slow_p, *fast_p;
-	int nodes = 1;
+	listint_t **newlist;
+	size_t i;
 
-	if (head == NULL || head->next == NULL)
-		return (0);
-	slow_p = head->next;
-	fast_p = (head->next)->next;
-	while (fast_p)
+	newlist = malloc(size * sizeof(listint_t *));
+	if (newlist == NULL)
 	{
-		if (slow_p == fast_p)
-		{
-			slow_p = head;
-			for (; slow_p != fast_p; nodes++)
-			{
-				slow_p = slow_p->next;
-				fast_p = fast_p->next;
-			}
-			slow_p = slow_p->next;
-			for (; slow_p != fast_p; nodes++)
-				slow_p = slow_p->next;
-			return (nodes);
-		}
-		slow_p = slow_p->next;
-		fast_p = (fast_p->next)->next;
+		free(list);
+		exit(98);
 	}
-
-	return (0);
+	for (i = 0; i < size - 1; i++)
+		newlist[i] = list[i];
+	newlist[i] = new;
+	free(list);
+	return (newlist);
 }
-/**
- * free_listint_safe - Free linked list.
- * @h: Linked list.
- * Return: Number of nodes in list.
- */
-int free_listint_safe(listint_t **h)
-{
-	listint_t *aux;
-	int nodes = floyds_cycle2(*h), id;
 
-	if (nodes == 0)
+/**
+ * free_listint_safe - frees a listint_t linked list.
+ * @head: double pointer to the start of the list
+ *
+ * Return: the number of nodes in the list
+ */
+size_t free_listint_safe(listint_t **head)
+{
+	size_t i, num = 0;
+	listint_t **list = NULL;
+	listint_t *next;
+
+	if (head == NULL || *head == NULL)
+		return (num);
+	while (*head != NULL)
 	{
-		for (nodes = 0; h && *h; nodes++)
+		for (i = 0; i < num; i++)
 		{
-			aux = (*h)->next;
-			free(*h);
-			*h = aux;
+			if (*head == list[i])
+			{
+				*head = NULL;
+				free(list);
+				return (num);
+			}
 		}
-		h = NULL;
-		return (nodes);
+		num++;
+		list = _ra(list, num, *head);
+		next = (*head)->next;
+		free(*head);
+		*head = next;
 	}
-	for (id = 0; id < nodes; id++)
-	{
-		aux = (*h)->next;
-		free(*h);
-		*h = aux;
-	}
-	*h = NULL;
-	h = NULL;
-	return (nodes);
+	free(list);
+	return (num);
 }
