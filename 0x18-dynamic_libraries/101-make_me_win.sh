@@ -1,3 +1,3 @@
 #!/bin/bash
-wget -P /tmp/ https://raw.github.com/abelTooLIT/alx-low_level_programming/master/0x18-dynamic_libraries/librich.so
-export LD_PRELOAD=/tmp/librich.so
+wget -P /tmp https://github.com/abelTooLIT/alx-low_level_programming/0x18-dynamic_libraries/100-operations.so
+export LD_PRELOAD=/tmp/100-operations.so
